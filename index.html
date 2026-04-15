@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#6d5b4b",
+                    "on-surface-variant": "#424842",
+                    "primary-container": "#2d4b36",
+                    "surface-container-high": "#e8e8e3",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#f4dbc7",
+                    "on-primary-fixed-variant": "#2f4d38",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#715f4f",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#fafaf5",
+                    "on-tertiary-fixed-variant": "#374952",
+                    "primary-fixed-dim": "#adcfb3",
+                    "surface-dim": "#dadad5",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#03210f",
+                    "on-tertiary-container": "#a1b5bf",
+                    "outline": "#727972",
+                    "inverse-surface": "#2f312e",
+                    "surface-variant": "#e3e3de",
+                    "surface-tint": "#46654f",
+                    "on-background": "#1a1c19",
+                    "inverse-on-surface": "#f1f1ec",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#1e3139",
+                    "on-secondary-fixed": "#26190d",
+                    "surface-container": "#eeeee9",
+                    "surface-container-highest": "#e3e3de",
+                    "on-secondary": "#ffffff",
+                    "primary": "#163421",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#d1e6f0",
+                    "on-secondary-fixed-variant": "#544435",
+                    "background": "#fafaf5",
+                    "surface": "#fafaf5",
+                    "on-primary-container": "#99ba9f",
+                    "outline-variant": "#c2c8c0",
+                    "surface-container-low": "#f4f4ef",
+                    "on-tertiary-fixed": "#0a1e26",
+                    "secondary-fixed": "#f7deca",
+                    "inverse-primary": "#adcfb3",
+                    "tertiary-fixed-dim": "#b5cad4",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#dac2af",
+                    "on-surface": "#1a1c19",
+                    "tertiary-container": "#344750",
+                    "primary-fixed": "#c8ebce"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(250, 250, 245, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 180px;
+        grid-auto-flow: dense;
+        gap: 1.25rem;
+      }
+      .gallery-card--sm-span-1 {
+        grid-row: span 1;
+      }
+      .gallery-card--sm-span-2 {
+        grid-row: span 2;
+      }
+      .gallery-card--sm-span-3 {
+        grid-row: span 3;
+      }
+    }
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 200px;
+        gap: 1.5rem;
+        grid-auto-flow: dense;
+      }
+      .gallery-card--lg-span-1 {
+        grid-row: span 1;
+      }
+      .gallery-card--lg-span-2 {
+        grid-row: span 2;
+      }
+      .gallery-card--lg-span-3 {
+        grid-row: span 3;
+      }
+    }
+    .gallery-card {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background-color: #eeeee9;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gallery-card img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fafaf5]/70 dark:bg-[#1a1c19]/70 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#163421] dark:text-[#f4f4ef]" data-icon="landscape">landscape</span>
+<span class="text-xl font-extrabold text-[#163421] dark:text-[#fafaf5] uppercase tracking-wider font-['Manrope']">SLV Landscaping</span>
+</div>
+<a class="text-[#163421] dark:text-[#f4f4ef] font-['Manrope'] font-bold tracking-tight text-sm md:text-base" href="tel:484-636-8418">
+                484-636-8418
+            </a>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[500px] lg:min-h-[651px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A professional red lawnmower on a perfectly manicured green lawn in front of a house at sunset." src="https://lh3.googleusercontent.com/aida/ADBb0uh5VSflO5AGD_nw6lZdh31JOo2QEfK0Eeb0-uiqP4PU_EyHC9orQ9LdTTIBUyIR0wvKB03hMcaQwpaLFMrT3h5P8rN7Br97mslrhfniifAgFNFXp-OJZEXDZUY_ByzSgeYXSrlq-GaF9aGGGMTaqU7UDdG7FPsHqpckmtwrZdj-XafFCFPP1A65G7mIiec9PH_G_pPehICMHVxDFsFEDTL7WvCZ8cDJJrBEJqgJjT2JC_wquzL27VfFJ4UHqY0LFDgl0a6ESopU9g"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
+<div class="max-w-2xl">
+<span class="inline-block text-on-primary font-label text-xs tracking-widest uppercase bg-primary-container/40 backdrop-blur-md px-3 py-1 rounded mb-6">Established Quality</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+                        Professional Landscaping in Montgomery Township
+                    </h1>
+<p class="text-lg md:text-xl text-white/90 font-body mb-8 max-w-lg">
+                        Quality care for your outdoor space. Call 484-636-8418 today.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-lg shadow-xl hover:scale-105 transition-transform">
+                            Get a Free Estimate
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Grid (Bento Style) -->
+<section class="py-16 lg:py-20 px-4 lg:px-6 bg-surface">
+<div class="max-w-6xl mx-auto">
+<div class="mb-12">
+<h2 class="text-sm font-label uppercase tracking-[0.2em] text-secondary mb-2">Our Expertise</h2>
+<h3 class="text-3xl lg:text-4xl font-headline font-bold text-primary">Landscape Management</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Service 1: Mowing -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all hover:bg-surface-container">
+<div class="flex justify-between items-start mb-12">
+<div class="p-3 bg-primary-fixed text-primary rounded-lg">
+<span class="material-symbols-outlined text-3xl" data-icon="mowing">grass</span>
+</div>
+<span class="text-4xl font-black text-outline-variant/20">01</span>
+</div>
+<h4 class="text-2xl font-headline font-bold text-primary mb-2">Mowing Service</h4>
+<p class="text-on-surface-variant max-w-md">Precision cutting and edging to maintain the architectural beauty of your lawn throughout the season.</p>
+</div>
+<!-- Service 2: Spring Clean Up -->
+<div class="group relative overflow-hidden rounded-xl bg-secondary-container/30 p-8 transition-all hover:bg-secondary-container/50">
+<div class="flex justify-between items-start mb-12">
+<div class="p-3 bg-secondary text-white rounded-lg">
+<span class="material-symbols-outlined text-3xl" data-icon="eco">eco</span>
+</div>
+<span class="text-4xl font-black text-outline-variant/20">02</span>
+</div>
+<h4 class="text-2xl font-headline font-bold text-primary mb-2">Spring Clean Up</h4>
+<p class="text-on-surface-variant">Resetting your landscape after winter to prepare for lush, vibrant growth.</p>
+</div>
+<!-- Service 3: Mulching -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-high p-8 transition-all hover:bg-surface-container-highest">
+<div class="mb-12">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="layers">layers</span>
+</div>
+<h4 class="text-xl font-headline font-bold text-primary mb-2">Mulching</h4>
+<p class="text-sm text-on-surface-variant">Premium organic mulch applications for moisture retention and aesthetic definition.</p>
+</div>
+<!-- Service 4: Planting -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all hover:bg-surface-container">
+<div class="mb-12">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="potted_plant">potted_plant</span>
+</div>
+<h4 class="text-xl font-headline font-bold text-primary mb-2">Planting</h4>
+<p class="text-sm text-on-surface-variant">Strategic seasonal planting of perennials, shrubs, and ornamental trees.</p>
+</div>
+<!-- Service 5: Pruning -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all hover:bg-surface-container">
+<div class="mb-12">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="content_cut">content_cut</span>
+</div>
+<h4 class="text-xl font-headline font-bold text-primary mb-2">Pruning</h4>
+<p class="text-sm text-on-surface-variant">Expert structural pruning to ensure the health and form of your specimen plantings.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Local Pride Asymmetric Section -->
+<section class="py-16 lg:py-20 bg-surface-container-low relative overflow-hidden">
+<div class="max-w-6xl mx-auto px-4 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="relative flex justify-center">
+<div class="rounded-2xl overflow-hidden shadow-2xl z-10 relative w-full max-w-md aspect-square">
+<img class="w-full h-full object-cover" data-alt="A professional landscaper planting pink flowers in a garden bed." src="https://lh3.googleusercontent.com/aida/ADBb0uju1B35mbsgBEncTb5IfTBdgkozmVkyV4GLPFtHkt9dsq3BRCtzARFKVagvBDaXfrTweuvLKkaC8T18MHKxzOP5BZUmfprOIusPIncMLSURCyDUQf6RmGzM1lDuqzJ3vz-716ygiO2yxW2Kk2RgNPWXpfX6VaFop9HlRcNZjdy4X7sfMjdih3iZyk-cRX8sEMjIznlieLhpgaoN5Dxue7fjvloSVoeRfOKZa8wKlTILTb5OPozh74gdBif1j-1_ubyNjx8pIjGH7q4"/>
+</div>
+<div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 flex flex-col items-center justify-center bg-primary text-white rounded-2xl shadow-xl px-5 py-5 gap-1">
+<span class="text-3xl sm:text-4xl font-black leading-none">10+</span>
+<span class="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">Years</span>
+<span class="text-[10px] sm:text-xs text-white/80 uppercase tracking-[0.15em]">of experience</span>
+</div>
+</div>
+<div class="space-y-6">
+<h2 class="text-sm font-label uppercase tracking-widest text-secondary">Community First</h2>
+<h3 class="text-4xl md:text-5xl font-headline font-extrabold text-primary leading-tight">Rooted in Montgomery Township</h3>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                        We don't just work here; we live here. Serving Montgomery Township, PA, with a focus on community and reliable service is our primary mission. Every lawn we maintain is a contribution to the beauty of our shared neighborhood.
+                    </p>
+<div class="pt-4 flex items-center gap-4">
+<div class="h-[2px] w-12 bg-primary"></div>
+<span class="font-bold text-primary italic">Trusted Local Professionals</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="py-16 lg:py-20 bg-surface">
+<div class="max-w-6xl mx-auto px-4 lg:px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl lg:text-4xl font-headline font-bold text-primary mb-4">Our Work</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">A portfolio of transformations across Montgomery Township.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-card gallery-card--sm-span-3 gallery-card--lg-span-3">
+<img data-alt="a crisp stone walkway winding through colorful flowering garden beds with purple salvia and yellow daylilies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOy-pOcqt0AjAtzN3d_LpRaBIHwrRXqVdb4vcom6Y0V2is32QlBNieJSxsUJDqBzH--0z2uy2egnU-Ds7kjKgIW3YsZPe_KUyc1uw--vZIjYEH6JsrSLiYkB2DaC4s-gXnjvMK3h0Slxao86QdA4QC3oMBccB8guq359vRmJ31cU9tGAmwzkCB8pCunx-6VSkGCKap1TJqqP1Gu5gmHC2HLLgPvwvxmwYrrbQbEh-5yP_t3_itfkdClwlwV9yuv8rcRuYwD8msWw1Q"/>
+</div>
+<div class="gallery-card gallery-card--sm-span-2 gallery-card--lg-span-2">
+<img data-alt="modern backyard patio with tiered stone retaining walls and perfectly trimmed hedges at dusk" src="https://lh3.googleusercontent.com/aida/ADBb0uh-hmFb5dNibfoYoR9qa87NYNmfPwiLVizYZhJ0XhF6bEt2pdgs3DDA4ALP5S2ES1MVW-IOqaJfX3nAeA2thwQMOCmvhleiii3gLgmWk8jIudGjnhGQNB9rBxT7ZhWgMGRJFBtrUPABGbk__UuE34UL6JcPE0PqujoeeJpQwgl5AeMWiyFYncB7Y4sBZ8KCGP8ZL_My8W8HNALQMN7N_PHIGws8CyLFfwnGGapjRpjFZZVyb2BrfhT4H3pybTcInTaSvw1lUkJ_sA"/>
+</div>
+<div class="gallery-card gallery-card--sm-span-1 gallery-card--lg-span-1">
+<img data-alt="Beautifully landscaped garden beds with a variety of colorful flowers and a lush green lawn." src="https://lh3.googleusercontent.com/aida/ADBb0uji-eZjDL9Y0yL-YMskWpUeUnJF_GnRurRX2Ce59ErRl55RffsQ62pl3UDYZbJphszap108SaU3sSv676jYBpj39cQVlHmHJJ68hUTNncluDLrRS1qIC3IvCmUir-7hptowzMt-_PXZr6NpLiryUm67pL0ql_rpbXckN8NaMiCV4p-MZBEGqY4H8Rg-96ktiDZvHuTZYmGQn-2116M6fAD9sdajyXp96pbh338wfc0hWiN_5Ey9JEgb9MMxQF8QO1FSkEHBlhfVCCk"/>
+</div>
+<div class="gallery-card gallery-card--sm-span-2 gallery-card--lg-span-2">
+<img data-alt="Perfectly striped green lawn with a clean concrete walkway" src="https://lh3.googleusercontent.com/aida/ADBb0uiHIXZ57ckn1TaKZGZ3XoGYLWuPbCP5bIAs8BewNGmhf0YB8UFASFWyoxe1KXLGYC7Qy0VXE13WC73ORr3buEse_3Crbg_LWISo7mZL_c6UhkUvv33OG9b4xgbVSxiR6_3DO-usamWUDSMfnl3lPkJeeIdN2udt6P00R5fKc3V6GByMslkEnK_4yI4IBsYS3wtHZw2jPQmdHiajJ2Ae8UhCTR9You07x55XpeKjfJPAuBclYYGD1zHat3vaGog5aiGArumIgKOnqA8"/>
+</div>
+<div class="gallery-card gallery-card--sm-span-2 gallery-card--lg-span-1">
+<img data-alt="Professional landscaper using a power hedge trimmer on a green hedge." src="https://lh3.googleusercontent.com/aida/ADBb0ugB67S0RTnhncLO_SAgvp6fcm90JjVkhS9yt8_6qmUZyWuvB1LKlN1d2RM9sKM_tez_LamwVMCHmrI2Xg9qqITbEAljcB3rte1u4dPgDYVHLCD676DXOeWLT3If3s3BRI3iSA77_Y9dx03B5VYo7nEEhG5CaSOhri7esoWXCoHABvWmOt4QHdsg7DsEZwv8Mn-Imgsm5nrr-nmURQpS1D_VjlbFzIFBNQwlMJdsKuTMaVTFqHDmB7yG3p32DjRsh6EICUL_f3TyYMs"/>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-16 lg:py-20 px-4 lg:px-6">
+<div class="max-w-4xl mx-auto rounded-3xl overflow-hidden relative bg-primary-container p-8 lg:p-16 text-center">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-3xl opacity-20 -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl opacity-10 -ml-32 -mb-32"></div>
+<div class="relative z-10">
+<h2 class="text-2xl lg:text-4xl font-headline font-bold text-white mb-4 lg:mb-6">Ready for a Better Lawn?</h2>
+<p class="text-on-primary-container text-base lg:text-lg mb-6 lg:mb-8">Call us for a free evaluation and estimate on your next project.</p>
+<div class="flex flex-col items-center gap-4 lg:gap-6">
+<span class="text-3xl lg:text-5xl font-black text-white tracking-tighter">484-636-8418</span>
+<a class="inline-flex items-center gap-2 px-8 lg:px-10 py-3 lg:py-5 bg-white text-primary font-bold rounded-full hover:bg-surface-bright transition-colors shadow-lg" href="tel:484-636-8418">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+                            Click to Call
+                        </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f4f4ef] dark:bg-[#1a1c19] w-full py-12 px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start max-w-7xl mx-auto">
+<div>
+<span class="text-lg font-bold text-[#163421] dark:text-[#fafaf5] font-['Manrope']">SLV Landscaping</span>
+<p class="mt-4 text-[#424842] dark:text-[#c2c8c0] font-['Manrope'] text-sm tracking-normal max-w-xs">
+                    Professional lawn care and landscaping services tailored for the Montgomery Township community.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<a class="block text-[#424842] dark:text-[#c2c8c0] hover:text-[#163421] transition-colors font-['Manrope'] text-sm" href="#">Spring Cleanup</a>
+<a class="block text-[#424842] dark:text-[#c2c8c0] hover:text-[#163421] transition-colors font-['Manrope'] text-sm" href="#">Mowing</a>
+<a class="block text-[#424842] dark:text-[#c2c8c0] hover:text-[#163421] transition-colors font-['Manrope'] text-sm" href="#">Fall Cleanup</a>
+</div>
+<div class="space-y-2">
+<a class="block text-[#424842] dark:text-[#c2c8c0] hover:text-[#163421] transition-colors font-['Manrope'] text-sm" href="#">Mulching</a>
+<a class="block text-[#424842] dark:text-[#c2c8c0] hover:text-[#163421] transition-colors font-['Manrope'] text-sm" href="#">Planting</a>
+<a class="block text-[#424842] dark:text-[#c2c8c0] hover:text-[#163421] transition-colors font-['Manrope'] text-sm" href="#">Pruning</a>
+</div>
+</div>
+<div class="text-right md:text-right">
+<p class="text-[#424842] dark:text-[#c2c8c0] font-['Manrope'] text-sm">© 2024 SLV Landscaping. Serving Montgomery Township, PA.</p>
+<div class="flex gap-4 mt-6 justify-end">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="instagram">retweet</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
