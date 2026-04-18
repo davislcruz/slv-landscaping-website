@@ -239,32 +239,65 @@
       padding: 0 24px;
       display: flex;
       justify-content: flex-start;
+      align-items: center;
     }
     
     .hero__content {
       max-width: 620px;
       text-align: left;
+      flex: 1;
+      padding-right: 40px;
+    }
+    
+    .hero__image-container {
+      flex: 2;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero__image-container img {
+      max-height: 80vh;
+      max-width: 100%;
     }
     
     @media (max-width: 1024px) {
       .hero__inner {
         padding: 0 32px;
+        flex-direction: column;
       }
       
       .hero__content {
         max-width: 580px;
+        padding-right: 0;
+        margin-bottom: 40px;
+      }
+      
+      .hero__image-container {
+        flex: 1;
+        height: 400px;
       }
     }
     
     @media (max-width: 768px) {
       .hero__inner {
-        justify-content: center;
+        flex-direction: column;
         text-align: center;
+        justify-content: center;
       }
       
       .hero__content {
         max-width: 540px;
         text-align: center;
+        padding-right: 0;
+        margin: 0 auto 40px;
+      }
+      
+      .hero__image-container {
+        height: 300px;
+        flex: 1;
       }
       
       .hero__actions {
@@ -320,10 +353,6 @@
 <main>
 <!-- Hero Section -->
 <section class="hero relative overflow-hidden">
-<div class="absolute inset-0 z-0">
-    <img class="w-full h-full object-contain object-right" alt="Freshly mowed lawn with a lawnmower in the foreground." src="assets/hero.png?v=20260418"/>
-<div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent"></div>
-</div>
 <div class="hero__inner relative z-10">
 <div class="hero__content">
 <span class="inline-block trust-badge bg-[#163421]/90 backdrop-blur-md px-4 py-2 rounded-full mb-8">Trusted Local Lawn Care</span>
@@ -356,7 +385,11 @@ Local Service
 </span>
 </div>
 </div>
+<div class="hero__image-container">
+    <img class="object-contain" alt="Freshly mowed lawn with a lawnmower in the foreground." src="assets/hero.png?v=20260418"/>
 </div>
+</div>
+<div class="absolute inset-0 z-0 bg-gradient-to-r from-black/85 via-black/50 via-transparent"></div>
 </section>
 <!-- Services Grid (Bento Style) -->
 <section id="services" class="py-16 lg:py-20 px-4 lg:px-6 bg-surface">
