@@ -153,6 +153,81 @@
     .gallery-card:hover img {
       transform: scale(1.05);
     }
+    
+    /* Premium header styles */
+    .premium-header {
+      height: 80px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+    
+    .premium-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #163421, #2d4b36);
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(22, 52, 33, 0.2);
+    }
+    
+    .premium-phone:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(22, 52, 33, 0.3);
+    }
+    
+    .premium-primary-cta {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #163421, #2d4b36);
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(22, 52, 33, 0.25);
+      border: none;
+    }
+    
+    .premium-primary-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(22, 52, 33, 0.35);
+      background: linear-gradient(135deg, #1a3e27, #35563f);
+    }
+    
+    .premium-secondary-cta {
+      padding: 14px 28px;
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .premium-secondary-cta:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+      transform: translateY(-2px);
+    }
+    
+    .trust-badge {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    
+    .hero-content {
+      max-width: 580px;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -182,37 +257,60 @@
 </head>
 <body class="bg-surface font-body text-on-surface antialiased">
 <!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#fafaf5]/70 dark:bg-[#1a1c19]/70 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300">
-<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-<div class="flex items-center gap-2">
+<header class="fixed top-0 w-full z-50 bg-[#fafaf5]/70 dark:bg-[#1a1c19]/70 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300 premium-header">
+<div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-[#163421] dark:text-[#f4f4ef]" data-icon="landscape">landscape</span>
 <span class="text-xl font-extrabold text-[#163421] dark:text-[#fafaf5] uppercase tracking-wider font-['Manrope']">SLV Landscaping</span>
 </div>
-<a class="text-[#163421] dark:text-[#f4f4ef] font-['Manrope'] font-bold tracking-tight text-sm md:text-base" href="tel:484-636-8418">
+<div class="flex items-center gap-4">
+<a class="premium-phone" href="tel:484-636-8418">
+                <span class="material-symbols-outlined text-lg">call</span>
                 484-636-8418
             </a>
+<button class="premium-primary-cta">
+                Get Estimate
+            </button>
+</div>
 </div>
 </header>
-<main class="pt-16">
+<main class="pt-20">
 <!-- Hero Section -->
-<section class="relative min-h-[500px] lg:min-h-[651px] flex items-center overflow-hidden">
+<section class="relative min-h-[600px] lg:min-h-[701px] flex items-center overflow-hidden">
 <div class="absolute inset-0 z-0">
     <img class="w-full h-full object-cover" alt="Freshly mowed lawn with a lawnmower in the foreground." src="assets/hero.png?v=20260418"/>
-<div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent"></div>
 </div>
-<div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
-<div class="max-w-2xl">
-<span class="inline-block text-on-primary font-label text-xs tracking-widest uppercase bg-primary-container/40 backdrop-blur-md px-3 py-1 rounded mb-6">Established Quality</span>
-<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-                        Professional Landscaping in Montgomery Township
+<div class="relative z-10 max-w-7xl mx-auto px-8 py-24">
+<div class="hero-content">
+<span class="inline-block trust-badge bg-[#163421]/90 backdrop-blur-md px-4 py-2 rounded-full mb-8">Trusted Local Lawn Care</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-[1.05] tracking-tight mb-8">
+                        Professional Lawn Care for Montgomery Township
                     </h1>
-<p class="text-lg md:text-xl text-white/90 font-body mb-8 max-w-lg">
-                        Quality care for your outdoor space. Call 484-636-8418 today.
+<p class="text-xl md:text-2xl text-white/95 font-body mb-12 leading-relaxed">
+                        Dependable mowing, cleanup, and outdoor maintenance with a polished, professional finish.
                     </p>
-<div class="flex flex-col sm:flex-row gap-4">
-<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-lg shadow-xl hover:scale-105 transition-transform">
+<div class="flex flex-col sm:flex-row gap-5 mb-10">
+<button class="premium-primary-cta">
                             Get a Free Estimate
                         </button>
+<button class="premium-secondary-cta">
+                            View Services
+                        </button>
+</div>
+<div class="flex flex-wrap items-center gap-8 text-white/80 text-sm">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">verified</span>
+Licensed & Insured
+</span>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">schedule</span>
+Fast Response Times
+</span>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">location_on</span>
+Local Service
+</span>
 </div>
 </div>
 </div>
@@ -375,5 +473,29 @@
 </div>
 </div>
 </footer>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryCards = document.querySelectorAll('.gallery-card');
+      
+      galleryCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          // Add dimmed class to all other cards
+          galleryCards.forEach(c => {
+            if (c !== this) {
+              c.style.opacity = '0.85';
+              c.style.transform = 'scale(0.98)';
+            }
+          });
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          // Remove dimmed effect from all cards
+          galleryCards.forEach(c => {
+            c.style.opacity = '';
+            c.style.transform = '';
+          });
+        });
+      });
+    });
+</script>
 </body></html>
