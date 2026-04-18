@@ -233,7 +233,7 @@
     /* Desktop scale refinement (feels less "zoomed") */
     @media (min-width: 1024px) {
       :root {
-        --site-header-h: 64px;
+        --site-header-h: 60px;
       }
       .site-header__inner {
         gap: 12px;
@@ -249,22 +249,22 @@
         letter-spacing: 0.07em;
       }
       .site-header__icon-btn {
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
       }
       .site-header__phone {
-        height: 36px;
+        height: 34px;
         padding: 0 10px;
         font-size: 12px;
       }
       .site-header__cta {
-        height: 36px;
+        height: 34px;
         padding: 0 10px;
         font-size: 12px;
       }
 
       .hero__content {
-        padding: 32px 24px 32px 30px;
+        padding: 26px 20px 26px 26px;
       }
       .hero__content h1 {
         max-width: 18ch;
@@ -402,8 +402,8 @@
     
     /* Premium hero layout */
     .hero {
-      /* Hero starts below fixed header */
-      min-height: calc(100vh - var(--site-header-h));
+      /* Keep the hero premium but not full-viewport tall */
+      --hero-h: 600px;
     }
     
     .hero__inner {
@@ -411,14 +411,14 @@
       max-width: 100%;
       display: grid;
       grid-template-columns: 1fr 2fr;
-      min-height: calc(100vh - var(--site-header-h));
+      min-height: var(--hero-h);
     }
 
     .hero__image-container {
       min-width: 0;
       position: relative;
       overflow: hidden;
-      min-height: calc(100vh - var(--site-header-h));
+      min-height: var(--hero-h);
     }
     
     .hero__image-container img {
@@ -439,7 +439,7 @@
     .hero__content {
       min-width: 0;
       background: linear-gradient(135deg, #163421, #2d4b36);
-      padding: 48px 34px 48px 42px;
+      padding: 36px 26px 36px 32px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -450,6 +450,9 @@
 
     @media (min-width: 1024px) {
       /* Desktop: keep the text column in the 25-33% range */
+      .hero {
+        --hero-h: clamp(520px, 72vh, 640px);
+      }
       .hero__inner {
         grid-template-columns: minmax(320px, 30%) 1fr;
       }
@@ -564,32 +567,32 @@
 <section class="hero">
 <div class="hero__inner">
 <div class="hero__content">
-<span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wider mb-3.5">Trusted Local Lawn Care</span>
-<h1 class="text-[34px] sm:text-4xl lg:text-[36px] font-headline font-extrabold leading-[1.05] tracking-tight mb-3.5">
+<span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wider mb-3">Trusted Local Lawn Care</span>
+<h1 class="text-[34px] sm:text-4xl lg:text-[34px] font-headline font-extrabold leading-[1.04] tracking-tight mb-3">
                         Professional Lawn Care for Montgomery Township
                     </h1>
-<p class="text-[15px] lg:text-[16px] mb-5 leading-relaxed text-white/85">
+<p class="text-[15px] lg:text-[15px] mb-4 leading-relaxed text-white/82">
                         Dependable mowing, cleanup, and outdoor maintenance with a polished, professional finish.
                     </p>
-<div class="flex flex-col gap-2.5 mb-5">
-<a href="#estimate" class="inline-block px-4.5 py-2 bg-white text-[#163421] rounded-full font-extrabold text-[13px] text-center hover:bg-gray-100 transition-colors">
+<div class="flex flex-col gap-2 mb-4">
+<a href="#estimate" class="inline-block px-4 py-2 bg-white text-[#163421] rounded-full font-extrabold text-[13px] text-center hover:bg-gray-100 transition-colors">
                             Get a Free Estimate
                         </a>
-<a href="#services" class="inline-block px-4.5 py-2 bg-transparent border-2 border-white text-white rounded-full font-extrabold text-[13px] text-center hover:bg-white hover:text-[#163421] transition-colors">
+<a href="#services" class="inline-block px-4 py-2 bg-transparent border-2 border-white text-white rounded-full font-extrabold text-[13px] text-center hover:bg-white hover:text-[#163421] transition-colors">
                             View Services
                         </a>
 </div>
-<div class="flex flex-wrap gap-x-5 gap-y-2 text-white/75 text-[13px]">
+<div class="flex flex-wrap gap-x-4 gap-y-1.5 text-white/72 text-[12px]">
 <span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-base">verified</span>
+<span class="material-symbols-outlined text-[18px]">verified</span>
 Licensed & Insured
 </span>
 <span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-base">schedule</span>
+<span class="material-symbols-outlined text-[18px]">schedule</span>
 Fast Response
 </span>
 <span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-base">location_on</span>
+<span class="material-symbols-outlined text-[18px]">location_on</span>
 Local Service
 </span>
 </div>
