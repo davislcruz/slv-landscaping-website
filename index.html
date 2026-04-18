@@ -291,18 +291,39 @@
     
     @media (max-width: 768px) {
       .hero__inner {
+        position: relative;
+        height: calc(100vh - 80px);
         text-align: center;
         justify-content: center;
       }
       
       .hero__content {
+        /* Mobile: no card/panel; text sits on image */
+        background: transparent;
         text-align: center;
         padding: 40px 20px;
+        margin: 0 auto;
+        max-width: 560px;
+        position: relative;
+        z-index: 1;
       }
       
       .hero__image-container {
-        height: 320px;
-        flex: 1;
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+      }
+
+      .hero__image-overlay {
+        /* full-hero dark overlay on mobile */
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.72),
+          rgba(0, 0, 0, 0.35) 55%,
+          rgba(0, 0, 0, 0.72)
+        );
       }
       
       .hero__actions {
