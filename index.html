@@ -134,6 +134,7 @@
       overflow: hidden;
       background-color: #eeeee9;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
     .gallery-card img {
       width: 100%;
@@ -142,8 +143,12 @@
       transition: transform 0.5s ease;
       display: block;
     }
-    .gallery-card img:hover {
-      transform: scale(1.05);
+    .gallery-card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+    .gallery-card:hover img {
+      transform: scale(1.15);
     }
   </style>
 </head>
@@ -249,7 +254,7 @@
         <img class="w-full h-full object-cover" alt="Planting flowers with a shovel." loading="lazy" src="assets/shoveling.png?v=20260418"/>
 </div>
 <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 flex flex-col items-center justify-center bg-primary text-white rounded-2xl shadow-xl px-5 py-5 gap-1">
-<span class="text-3xl sm:text-4xl font-black leading-none">10+</span>
+<span class="text-3xl sm:text-4xl font-black leading-none">15+</span>
 <span class="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">Years</span>
 <span class="text-[10px] sm:text-xs text-white/80 uppercase tracking-[0.15em]">of experience</span>
 </div>
