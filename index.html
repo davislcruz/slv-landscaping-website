@@ -264,13 +264,13 @@
       }
 
       .hero__content {
-        padding: 44px 32px 44px 40px;
+        padding: 40px 30px 40px 36px;
       }
       .hero__content h1 {
-        max-width: 19ch;
+        max-width: 18ch;
       }
       .hero__content p {
-        max-width: 54ch;
+        max-width: 52ch;
       }
     }
 
@@ -403,14 +403,15 @@
       width: 100%;
       max-width: 100%;
       display: grid;
-      grid-template-columns: 5fr 7fr;
-      height: calc(100vh - var(--site-header-h));
+      grid-template-columns: 1fr 2fr;
+      min-height: calc(100vh - var(--site-header-h));
     }
 
     .hero__image-container {
       min-width: 0;
       position: relative;
       overflow: hidden;
+      min-height: calc(100vh - var(--site-header-h));
     }
     
     .hero__image-container img {
@@ -438,6 +439,13 @@
       color: white;
       position: relative;
       overflow: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      /* Desktop: keep the text column in the 25-33% range */
+      .hero__inner {
+        grid-template-columns: minmax(340px, 32%) 1fr;
+      }
     }
     
     @media (max-width: 1024px) {
@@ -477,6 +485,7 @@
         height: 100%;
         width: 100%;
         z-index: 0;
+        min-height: 0;
       }
 
       .hero__image-overlay {
@@ -548,14 +557,14 @@
 <section class="hero">
 <div class="hero__inner">
 <div class="hero__content">
-<span class="inline-block bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider mb-5">Trusted Local Lawn Care</span>
-<h1 class="text-4xl lg:text-[44px] font-headline font-extrabold leading-[1.08] tracking-tight mb-5">
+<span class="inline-block bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider mb-4">Trusted Local Lawn Care</span>
+<h1 class="text-4xl lg:text-[40px] font-headline font-extrabold leading-[1.06] tracking-tight mb-4">
                         Professional Lawn Care for Montgomery Township
                     </h1>
-<p class="text-base lg:text-lg mb-7 leading-relaxed text-white/90">
+<p class="text-base lg:text-[17px] mb-6 leading-relaxed text-white/88">
                         Dependable mowing, cleanup, and outdoor maintenance with a polished, professional finish.
                     </p>
-<div class="flex flex-col gap-3 mb-7">
+<div class="flex flex-col gap-3 mb-6">
 <a href="#estimate" class="inline-block px-5 py-2.5 bg-white text-[#163421] rounded-full font-extrabold text-sm text-center hover:bg-gray-100 transition-colors">
                             Get a Free Estimate
                         </a>
