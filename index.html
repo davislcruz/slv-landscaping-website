@@ -153,11 +153,32 @@
     .gallery-card:hover img {
       transform: scale(1.05);
     }
-    .gallery-grid:hover .gallery-card:not(:hover) {
-      opacity: 0.7;
-      transform: scale(0.95);
-    }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryCards = document.querySelectorAll('.gallery-card');
+      
+      galleryCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          // Add dimmed class to all other cards
+          galleryCards.forEach(c => {
+            if (c !== this) {
+              c.style.opacity = '0.7';
+              c.style.transform = 'scale(0.95)';
+            }
+          });
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          // Remove dimmed effect from all cards
+          galleryCards.forEach(c => {
+            c.style.opacity = '';
+            c.style.transform = '';
+          });
+        });
+      });
+    });
+  </script>
 </head>
 <body class="bg-surface font-body text-on-surface antialiased">
 <!-- TopAppBar -->
