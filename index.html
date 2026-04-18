@@ -227,37 +227,42 @@
     
     /* Premium hero layout */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
+      /* main has top padding to clear fixed header */
+      min-height: calc(100vh - 80px);
     }
     
     .hero__inner {
       width: 100%;
       max-width: 100%;
       display: flex;
-      height: 100vh;
+      height: calc(100vh - 80px);
     }
     
     .hero__image-container {
-      flex: 2;
+      flex: 2 0 66.666%;
       position: relative;
       overflow: hidden;
-      max-width: 66.66%;
     }
     
     .hero__image-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: right center;
+    }
+
+    .hero__image-overlay {
+      position: absolute;
+      inset: 0;
+      /* subtle blend into the left panel */
+      background: linear-gradient(to left, rgba(22, 52, 33, 0.35), rgba(22, 52, 33, 0) 55%);
+      pointer-events: none;
     }
     
     .hero__content {
-      flex: 1;
+      flex: 1 0 33.333%;
       background: linear-gradient(135deg, #163421, #2d4b36);
-      padding: 60px 40px 60px 60px;
+      padding: 56px 40px 56px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -266,37 +271,20 @@
       overflow: hidden;
     }
     
-    .hero__content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(22, 52, 33, 0.95);
-      z-index: 1;
-    }
-    
-    .hero__content > * {
-      position: relative;
-      z-index: 2;
-    }
-    
     @media (max-width: 1024px) {
       .hero__inner {
-        padding: 0 32px;
         flex-direction: column;
+        height: auto;
+        min-height: calc(100vh - 80px);
       }
       
       .hero__content {
-        max-width: 580px;
-        padding-right: 0;
-        margin-bottom: 40px;
+        padding: 44px 24px;
       }
       
       .hero__image-container {
         flex: 1;
-        height: 400px;
+        height: 420px;
       }
     }
     
@@ -308,14 +296,12 @@
       }
       
       .hero__content {
-        max-width: 540px;
         text-align: center;
-        padding-right: 0;
-        margin: 0 auto 40px;
+        padding: 40px 20px;
       }
       
       .hero__image-container {
-        height: 300px;
+        height: 320px;
         flex: 1;
       }
       
@@ -352,8 +338,8 @@
 </head>
 <body class="bg-surface font-body text-on-surface antialiased">
 <!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-white/95 dark:bg-[#1a1c19]/95 backdrop-blur-xl shadow-lg dark:shadow-none transition-colors duration-300">
-<div class="flex justify-between items-center px-6 lg:px-12 py-4 max-w-full mx-auto">
+<header class="fixed top-0 w-full z-50 bg-white/95 dark:bg-[#1a1c19]/95 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300 border-b border-black/10">
+<div class="flex justify-between items-center px-6 lg:px-8 py-4 max-w-7xl mx-auto">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-[#163421] text-2xl">landscape</span>
 <span class="text-xl font-extrabold text-[#163421] uppercase tracking-wider font-['Manrope']">SLV Landscaping</span>
@@ -369,7 +355,7 @@
 </div>
 </div>
 </header>
-<main>
+<main class="pt-20">
 <!-- Hero Section -->
 <section class="hero">
 <div class="hero__inner">
@@ -406,36 +392,7 @@ Local Service
 </div>
 <div class="hero__image-container">
     <img alt="Freshly mowed lawn with a lawnmower in the foreground." src="assets/hero.png?v=20260418"/>
-</div>
-<span class="inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold tracking-wider mb-6">Trusted Local Lawn Care</span>
-<h1 class="text-4xl lg:text-5xl font-headline font-extrabold leading-[1.1] tracking-tight mb-6">
-                        Professional Lawn Care for Montgomery Township
-                    </h1>
-<p class="text-lg lg:text-xl mb-8 leading-relaxed">
-                        Dependable mowing, cleanup, and outdoor maintenance with a polished, professional finish.
-                    </p>
-<div class="flex flex-col gap-3 mb-8">
-<a href="#estimate" class="inline-block px-6 py-3 bg-white text-[#163421] rounded-full font-bold text-center hover:bg-gray-100 transition-colors">
-                            Get a Free Estimate
-                        </a>
-<a href="#services" class="inline-block px-6 py-3 bg-transparent border-2 border-white text-white rounded-full font-bold text-center hover:bg-white hover:text-[#163421] transition-colors">
-                            View Services
-                        </a>
-</div>
-<div class="flex flex-wrap gap-6 text-white/80 text-sm">
-<span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-base">verified</span>
-Licensed & Insured
-</span>
-<span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-base">schedule</span>
-Fast Response
-</span>
-<span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-base">location_on</span>
-Local Service
-</span>
-</div>
+    <div class="hero__image-overlay"></div>
 </div>
 </div>
 </section>
