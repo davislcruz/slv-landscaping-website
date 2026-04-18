@@ -333,8 +333,8 @@
     
     /* Premium hero layout */
     .hero {
-      /* main has top padding to clear fixed header */
-      min-height: calc(100vh - 80px);
+      /* Let the hero sit behind the glass header */
+      min-height: 100vh;
     }
     
     .hero__inner {
@@ -342,7 +342,7 @@
       max-width: 100%;
       display: grid;
       grid-template-columns: 1fr 2fr;
-      height: calc(100vh - 80px);
+      height: 100vh;
     }
 
     .hero__image-container {
@@ -392,7 +392,7 @@
     @media (max-width: 768px) {
       .hero__inner {
         position: relative;
-        height: calc(100vh - 80px);
+        height: 100vh;
         grid-template-columns: 1fr;
         text-align: center;
         justify-content: center;
@@ -481,7 +481,7 @@
 </div>
 </div>
 </header>
-<main class="pt-20">
+<main>
 <!-- Hero Section -->
 <section class="hero">
 <div class="hero__inner">
