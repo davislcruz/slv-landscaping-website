@@ -228,6 +228,29 @@
     /* Header: mobile-first, premium spacing */
     .site-header {
       height: 80px;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 26px -24px rgba(0, 0, 0, 0.35);
+    }
+    .dark .site-header {
+      background: rgba(26, 28, 25, 0.92);
+      border-bottom-color: rgba(255, 255, 255, 0.10);
+      box-shadow: none;
+    }
+
+    /* When scrolled, switch to a glass treatment */
+    .site-header.site-header--scrolled {
+      background: rgba(255, 255, 255, 0.75);
+      border-bottom-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 10px 30px -24px rgba(0, 0, 0, 0.45);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      backdrop-filter: blur(24px) saturate(150%);
+    }
+    .dark .site-header.site-header--scrolled {
+      background: rgba(26, 28, 25, 0.70);
+      border-bottom-color: rgba(255, 255, 255, 0.10);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      backdrop-filter: blur(24px) saturate(150%);
     }
     .site-header__inner {
       height: 100%;
@@ -333,8 +356,8 @@
     
     /* Premium hero layout */
     .hero {
-      /* Let the hero sit behind the glass header */
-      min-height: 100vh;
+      /* Hero starts below fixed header */
+      min-height: calc(100vh - 80px);
     }
     
     .hero__inner {
@@ -342,7 +365,7 @@
       max-width: 100%;
       display: grid;
       grid-template-columns: 1fr 2fr;
-      height: 100vh;
+      height: calc(100vh - 80px);
     }
 
     .hero__image-container {
@@ -392,7 +415,7 @@
     @media (max-width: 768px) {
       .hero__inner {
         position: relative;
-        height: 100vh;
+        height: calc(100vh - 80px);
         grid-template-columns: 1fr;
         text-align: center;
         justify-content: center;
@@ -434,6 +457,14 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const header = document.querySelector('.site-header');
+      const setHeaderState = () => {
+        if (!header) return;
+        header.classList.toggle('site-header--scrolled', window.scrollY > 8);
+      };
+      setHeaderState();
+      window.addEventListener('scroll', setHeaderState, { passive: true });
+
       const galleryCards = document.querySelectorAll('.gallery-card');
       
       galleryCards.forEach(card => {
@@ -460,7 +491,7 @@
 </head>
 <body class="bg-surface font-body text-on-surface antialiased" id="top">
 <!-- TopAppBar -->
-<header class="site-header fixed top-0 w-full z-50 bg-white/75 dark:bg-[#1a1c19]/70 backdrop-blur-xl backdrop-saturate-150 shadow-[0_10px_30px_-24px_rgba(0,0,0,0.45)] dark:shadow-none transition-colors duration-300 border-b border-white/35 dark:border-white/10">
+<header class="site-header fixed top-0 w-full z-50 transition-colors duration-300">
 <div class="site-header__inner px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 <a class="site-logo" href="#top" aria-label="SLV Landscaping">
 <span class="material-symbols-outlined text-[#163421] text-2xl">landscape</span>
@@ -481,7 +512,7 @@
 </div>
 </div>
 </header>
-<main>
+<main class="pt-20">
 <!-- Hero Section -->
 <section class="hero">
 <div class="hero__inner">
