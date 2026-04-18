@@ -94,6 +94,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 1rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     @media (min-width: 640px) {
       .gallery-grid {
@@ -134,21 +135,30 @@
       overflow: hidden;
       background-color: #eeeee9;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+      position: relative;
     }
     .gallery-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: block;
     }
-    .gallery-card:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    .gallery-card.active {
+      z-index: 10;
+      grid-column: span 2;
+      grid-row: span 2;
+      transform: scale(1.05);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     }
-    .gallery-card:hover img {
-      transform: scale(1.15);
+    .gallery-card.active img {
+      transform: scale(1.1);
+    }
+    .gallery-card.dimmed {
+      opacity: 0.7;
+      transform: scale(0.95);
     }
   </style>
 </head>
@@ -347,4 +357,33 @@
 </div>
 </div>
 </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    
+    galleryCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        // Remove active class from all cards first
+        galleryCards.forEach(c => c.classList.remove('active', 'dimmed'));
+        
+        // Add active class to current card
+        this.classList.add('active');
+        
+        // Add dimmed class to all other cards
+        galleryCards.forEach(c => {
+          if (c !== this) {
+            c.classList.add('dimmed');
+          }
+        });
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        // Remove all classes when mouse leaves
+        galleryCards.forEach(c => {
+          c.classList.remove('active', 'dimmed');
+        });
+      });
+    });
+  });
+</script>
 </body></html>
