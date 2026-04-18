@@ -224,6 +224,99 @@
       font-weight: 500;
       opacity: 0.9;
     }
+
+    /* Header: mobile-first, premium spacing */
+    .site-header {
+      height: 80px;
+    }
+    .site-header__inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .site-logo {
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .site-logo__text {
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.08em;
+    }
+    .site-header__actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .site-header__icon-btn {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: rgba(22, 52, 33, 0.08);
+      color: #163421;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .site-header__icon-btn:hover {
+      background: rgba(22, 52, 33, 0.12);
+      transform: translateY(-1px);
+    }
+    .site-header__cta {
+      height: 44px;
+      padding: 0 14px;
+      border-radius: 9999px;
+      background: #163421;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .site-header__cta:hover {
+      background: #1a3e27;
+      transform: translateY(-1px);
+    }
+    .site-header__phone {
+      height: 44px;
+      padding: 0 14px;
+      border-radius: 9999px;
+      background: rgba(22, 52, 33, 0.08);
+      color: #163421;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .site-header__phone:hover {
+      background: rgba(22, 52, 33, 0.12);
+      transform: translateY(-1px);
+    }
+
+    @media (min-width: 640px) {
+      .site-header__cta {
+        padding: 0 18px;
+        font-size: 14px;
+      }
+      .site-header__phone {
+        font-size: 14px;
+      }
+    }
     
     /* Premium hero layout */
     .hero {
@@ -352,22 +445,26 @@
     });
   </script>
 </head>
-<body class="bg-surface font-body text-on-surface antialiased">
+<body class="bg-surface font-body text-on-surface antialiased" id="top">
 <!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-white/95 dark:bg-[#1a1c19]/95 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300 border-b border-black/10">
-<div class="flex justify-between items-center px-6 lg:px-8 py-4 max-w-7xl mx-auto">
-<div class="flex items-center gap-3">
+<header class="site-header fixed top-0 w-full z-50 bg-white/95 dark:bg-[#1a1c19]/95 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300 border-b border-black/10">
+<div class="site-header__inner px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<a class="site-logo" href="#top" aria-label="SLV Landscaping">
 <span class="material-symbols-outlined text-[#163421] text-2xl">landscape</span>
-<span class="text-xl font-extrabold text-[#163421] uppercase tracking-wider font-['Manrope']">SLV Landscaping</span>
-</div>
-<div class="flex items-center gap-3">
-<a class="flex items-center gap-2 px-4 py-2 bg-[#163421] text-white rounded-full text-sm font-semibold hover:bg-[#1a3e27] transition-colors" href="tel:484-636-8418">
-                <span class="material-symbols-outlined text-base">call</span>
-                484-636-8418
-            </a>
-<a href="#estimate" class="px-6 py-2 bg-[#163421] text-white rounded-full text-sm font-semibold hover:bg-[#1a3e27] transition-colors whitespace-nowrap">
-                Get Estimate
-            </a>
+<span class="site-logo__text text-[15px] sm:text-xl font-extrabold text-[#163421] uppercase font-['Manrope']">SLV Landscaping</span>
+</a>
+<div class="site-header__actions">
+<a class="site-header__icon-btn sm:hidden" href="tel:484-636-8418" aria-label="Call 484-636-8418">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</a>
+<a class="site-header__phone hidden sm:inline-flex" href="tel:484-636-8418">
+<span class="material-symbols-outlined text-[18px]">call</span>
+484-636-8418
+</a>
+<a class="site-header__cta" href="#estimate">
+<span class="sm:hidden">Free Quote</span>
+<span class="hidden sm:inline">Get Estimate</span>
+</a>
 </div>
 </div>
 </header>
