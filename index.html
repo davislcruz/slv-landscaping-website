@@ -266,6 +266,10 @@
       color: #163421;
       transition: background 0.2s ease, transform 0.2s ease;
     }
+    .site-header__icon-btn:focus-visible {
+      outline: 2px solid rgba(22, 52, 33, 0.55);
+      outline-offset: 3px;
+    }
     .site-header__icon-btn:hover {
       background: rgba(22, 52, 33, 0.12);
       transform: translateY(-1px);
@@ -274,7 +278,7 @@
       height: 44px;
       padding: 0 14px;
       border-radius: 9999px;
-      background: #163421;
+      background: linear-gradient(135deg, #0f2a1a, #163421 45%, #2d4b36);
       color: #ffffff;
       font-size: 13px;
       font-weight: 800;
@@ -284,10 +288,15 @@
       align-items: center;
       justify-content: center;
       transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 10px 22px -18px rgba(0, 0, 0, 0.6);
     }
     .site-header__cta:hover {
-      background: #1a3e27;
+      background: linear-gradient(135deg, #12301e, #1a3e27 45%, #35563f);
       transform: translateY(-1px);
+    }
+    .site-header__cta:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.85);
+      outline-offset: 3px;
     }
     .site-header__phone {
       height: 44px;
@@ -306,6 +315,10 @@
     .site-header__phone:hover {
       background: rgba(22, 52, 33, 0.12);
       transform: translateY(-1px);
+    }
+    .site-header__phone:focus-visible {
+      outline: 2px solid rgba(22, 52, 33, 0.55);
+      outline-offset: 3px;
     }
 
     @media (min-width: 640px) {
@@ -447,7 +460,7 @@
 </head>
 <body class="bg-surface font-body text-on-surface antialiased" id="top">
 <!-- TopAppBar -->
-<header class="site-header fixed top-0 w-full z-50 bg-white/95 dark:bg-[#1a1c19]/95 backdrop-blur-xl shadow-sm dark:shadow-none transition-colors duration-300 border-b border-black/10">
+<header class="site-header fixed top-0 w-full z-50 bg-white/90 dark:bg-[#1a1c19]/92 backdrop-blur-md shadow-[0_6px_24px_-20px_rgba(0,0,0,0.35)] dark:shadow-none transition-colors duration-300 border-b border-black/10 dark:border-white/10">
 <div class="site-header__inner px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 <a class="site-logo" href="#top" aria-label="SLV Landscaping">
 <span class="material-symbols-outlined text-[#163421] text-2xl">landscape</span>
