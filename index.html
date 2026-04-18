@@ -231,36 +231,13 @@
     }
     .site-header {
       height: var(--site-header-h);
-      position: relative;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 26px -24px rgba(0, 0, 0, 0.35);
-    }
-    body.has-fixed-header {
-      padding-top: var(--site-header-h);
-    }
-    .site-header.site-header--fixed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-    .dark .site-header {
-      background: rgba(26, 28, 25, 0.92);
-      border-bottom-color: rgba(255, 255, 255, 0.10);
-      box-shadow: none;
-    }
-
-    /* When scrolled, switch to a glass treatment */
-    .site-header.site-header--scrolled {
       background: rgba(255, 255, 255, 0.75);
-      border-bottom-color: rgba(255, 255, 255, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
       box-shadow: 0 10px 30px -24px rgba(0, 0, 0, 0.45);
       -webkit-backdrop-filter: blur(24px) saturate(150%);
       backdrop-filter: blur(24px) saturate(150%);
     }
-    .dark .site-header.site-header--scrolled {
+    .dark .site-header {
       background: rgba(26, 28, 25, 0.70);
       border-bottom-color: rgba(255, 255, 255, 0.10);
       -webkit-backdrop-filter: blur(24px) saturate(150%);
@@ -471,17 +448,6 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const header = document.querySelector('.site-header');
-      const setHeaderState = () => {
-        if (!header) return;
-        const fixed = window.scrollY > 0;
-        header.classList.toggle('site-header--fixed', fixed);
-        document.body.classList.toggle('has-fixed-header', fixed);
-        header.classList.toggle('site-header--scrolled', window.scrollY > 12);
-      };
-      setHeaderState();
-      window.addEventListener('scroll', setHeaderState, { passive: true });
-
       const galleryCards = document.querySelectorAll('.gallery-card');
       
       galleryCards.forEach(card => {
@@ -508,7 +474,7 @@
 </head>
 <body class="bg-surface font-body text-on-surface antialiased" id="top">
 <!-- TopAppBar -->
-<header class="site-header w-full transition-colors duration-300">
+<header class="site-header fixed top-0 w-full z-50 transition-colors duration-300">
 <div class="site-header__inner px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 <a class="site-logo" href="#top" aria-label="SLV Landscaping">
 <span class="material-symbols-outlined text-[#163421] text-2xl">landscape</span>
@@ -529,7 +495,7 @@
 </div>
 </div>
 </header>
-<main>
+<main class="pt-20">
 <!-- Hero Section -->
 <section class="hero">
 <div class="hero__inner">
