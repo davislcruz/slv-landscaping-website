@@ -403,7 +403,7 @@
     /* Premium hero layout */
     .hero {
       /* Keep the hero premium but not full-viewport tall */
-      --hero-h: 520px;
+      --hero-h: 480px;
     }
     
     .hero__inner {
@@ -418,7 +418,7 @@
       min-width: 0;
       position: relative;
       overflow: hidden;
-      min-height: var(--hero-h);
+      height: 100%;
     }
     
     .hero__image-container img {
@@ -451,7 +451,7 @@
     @media (min-width: 1024px) {
       /* Desktop: keep the text column in the 25-33% range */
       .hero {
-        --hero-h: clamp(460px, 60vh, 540px);
+        --hero-h: clamp(420px, 55vh, 500px);
       }
       .hero__inner {
         grid-template-columns: minmax(320px, 30%) 1fr;
