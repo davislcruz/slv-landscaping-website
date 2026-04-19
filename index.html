@@ -233,7 +233,7 @@
     /* Desktop scale refinement (feels less "zoomed") */
     @media (min-width: 1024px) {
       :root {
-        --site-header-h: 60px;
+        --site-header-h: 58px;
       }
       .site-header__inner {
         gap: 12px;
@@ -249,22 +249,22 @@
         letter-spacing: 0.07em;
       }
       .site-header__icon-btn {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
       }
       .site-header__phone {
-        height: 34px;
+        height: 32px;
         padding: 0 10px;
         font-size: 12px;
       }
       .site-header__cta {
-        height: 34px;
+        height: 32px;
         padding: 0 10px;
         font-size: 12px;
       }
 
       .hero__content {
-        padding: 26px 20px 26px 26px;
+        padding: 22px 18px 22px 22px;
       }
       .hero__content h1 {
         max-width: 18ch;
@@ -403,7 +403,7 @@
     /* Premium hero layout */
     .hero {
       /* Keep the hero premium but not full-viewport tall */
-      --hero-h: 600px;
+      --hero-h: 560px;
     }
     
     .hero__inner {
@@ -439,10 +439,10 @@
     .hero__content {
       min-width: 0;
       background: linear-gradient(135deg, #163421, #2d4b36);
-      padding: 36px 26px 36px 32px;
+      padding: 30px 22px 28px 26px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       color: white;
       position: relative;
       overflow: visible;
@@ -451,10 +451,15 @@
     @media (min-width: 1024px) {
       /* Desktop: keep the text column in the 25-33% range */
       .hero {
-        --hero-h: clamp(520px, 72vh, 640px);
+        --hero-h: clamp(500px, 66vh, 600px);
       }
       .hero__inner {
         grid-template-columns: minmax(320px, 30%) 1fr;
+      }
+
+      /* Desktop: slightly more controlled, less floaty */
+      .hero__content {
+        justify-content: center;
       }
     }
     
@@ -567,14 +572,14 @@
 <section class="hero">
 <div class="hero__inner">
 <div class="hero__content">
-<span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wider mb-3">Trusted Local Lawn Care</span>
-<h1 class="text-[34px] sm:text-4xl lg:text-[34px] font-headline font-extrabold leading-[1.04] tracking-tight mb-3">
+<span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wider mb-2">Trusted Local Lawn Care</span>
+<h1 class="text-[34px] sm:text-4xl lg:text-[33px] font-headline font-extrabold leading-[1.03] tracking-tight mb-2">
                         Professional Lawn Care for Montgomery Township
                     </h1>
-<p class="text-[15px] lg:text-[15px] mb-4 leading-relaxed text-white/82">
+<p class="text-[15px] lg:text-[15px] mb-3 leading-relaxed text-white/82">
                         Dependable mowing, cleanup, and outdoor maintenance with a polished, professional finish.
                     </p>
-<div class="flex flex-col gap-2 mb-4">
+<div class="flex flex-col gap-1.5 mb-3">
 <a href="#estimate" class="inline-block px-4 py-2 bg-white text-[#163421] rounded-full font-extrabold text-[13px] text-center hover:bg-gray-100 transition-colors">
                             Get a Free Estimate
                         </a>
@@ -582,17 +587,17 @@
                             View Services
                         </a>
 </div>
-<div class="flex flex-wrap gap-x-4 gap-y-1.5 text-white/72 text-[12px]">
+<div class="flex flex-wrap gap-x-3 gap-y-1 text-white/72 text-[12px]">
 <span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
 Licensed & Insured
 </span>
 <span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="material-symbols-outlined text-[16px]">schedule</span>
 Fast Response
 </span>
 <span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="material-symbols-outlined text-[16px]">location_on</span>
 Local Service
 </span>
 </div>
