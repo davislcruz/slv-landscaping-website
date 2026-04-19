@@ -86,7 +86,8 @@
     </style>
 <style>
     body {
-      min-height: max(884px, 100dvh);
+      /* Don't force pages taller than the viewport */
+      min-height: 100dvh;
     }
   </style>
 <style>
@@ -411,7 +412,9 @@
       max-width: 100%;
       display: grid;
       grid-template-columns: 1fr 2fr;
-      min-height: var(--hero-h);
+      /* Never exceed the viewport height */
+      height: min(calc(100vh - var(--site-header-h)), var(--hero-h));
+      min-height: 0;
     }
 
     .hero__image-container {
