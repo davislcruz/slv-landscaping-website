@@ -91,43 +91,67 @@
     }
   </style>
 <style>
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
+    .brick-masonry-container {
+      height: 320px;
+      position: relative;
     }
-    @media (min-width: 640px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 180px;
-        grid-auto-flow: dense;
-        gap: 1.75rem;
-      }
-      .gallery-card--sm-span-1 {
-        grid-row: span 1;
-      }
-      .gallery-card--sm-span-2 {
-        grid-row: span 2;
-      }
-      .gallery-card--sm-span-3 {
-        grid-row: span 3;
-      }
+    .brick-masonry-container::-webkit-scrollbar {
+      display: none;
     }
-    @media (min-width: 1024px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 200px;
-        gap: 1.25rem;
-        grid-auto-flow: dense;
-      }
-      .gallery-card--lg-span-1 {
-        grid-row: span 1;
-      }
-      .gallery-card--lg-span-2 {
-        grid-row: span 2;
-      }
-      .gallery-card--lg-span-3 {
-        grid-row: span 3;
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .brick-item {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #f3f4f6;
+    }
+    .brick-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+    .brick-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.1));
+      pointer-events: none;
+    }
+    /* Placeholder styling for broken images */
+    .brick-item {
+      background: #f9fafb;
+    }
+    .brick-item img {
+      background: #f3f4f6;
+    }
+    /* Style for dynamically created placeholders */
+    .brick-item .absolute.inset-0.flex.items-center.justify-center.bg-gray-200 {
+      background: #e5e7eb !important;
+      color: #6b7280 !important;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 2px dashed #d1d5db;
+      backdrop-filter: blur(4px);
+      box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    }
+    /* Fallback styling for images with no src */
+    img:not([src]),
+    img[src=""],
+    img[src="data:"] {
+      background: #e5e7eb !important;
+      min-height: 100%;
+      min-width: 100%;
+    }
+    @media (max-width: 640px) {
+      .brick-masonry-grid {
+        grid-template-columns: repeat(12, 140px) !important;
+        grid-auto-rows: 120px !important;
       }
     }
     .gallery-card {
@@ -753,9 +777,9 @@
 <section class="hero">
 <div class="hero__inner">
 <div class="hero__content">
-<h1 class="hero__title">A sharper lawn for a <span class="hero__title-accent">better-kept home</span>.</h1>
+<h1 class="hero__title">A Sharper Lawn Starts with the <span class="hero__title-accent">Details</span></h1>
 <p class="hero__lead">
-                        Detail-focused mowing, edging, cleanup, and seasonal upkeep for residential and commercial properties that deserve a polished, consistent, professionally maintained appearance.
+                        We offer mowing, edging, cleanup, and seasonal maintenance for residential and commercial properties that deserve consistent, dependable service.
                     </p>
 <div class="hero__actions">
 <a href="#estimate" class="hero__cta hero__cta--primary">Request Your Estimate</a>
@@ -788,55 +812,55 @@
 </div>
 </section>
 <!-- Services Grid (Bento Style) -->
-<section id="services" class="py-16 lg:py-20 px-4 lg:px-6 bg-surface">
+<section id="services" class="bg-surface" style="padding: clamp(1.375rem, 2.5vw, 2.375rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.625rem); min-height: calc(100dvh - var(--site-header-h)); display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
 <div class="max-w-6xl mx-auto">
-<div class="mb-12">
-<h2 class="text-sm font-label uppercase tracking-[0.2em] text-secondary mb-2">Our Expertise</h2>
-<h3 class="text-3xl lg:text-4xl font-headline font-bold text-primary">Landscape Management</h3>
+<div class="mb-6">
+<h2 class="text-xs font-label uppercase tracking-[0.2em] text-secondary mb-1">Our Expertise</h2>
+<h3 class="text-2xl font-headline font-bold text-primary">Landscape Management</h3>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 <!-- Service 1: Mowing -->
-<div class="md:col-span-2 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all hover:bg-surface-container">
-<div class="flex justify-between items-start mb-12">
-<div class="p-3 bg-primary-fixed text-primary rounded-lg">
-<span class="material-symbols-outlined text-3xl" data-icon="mowing">grass</span>
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl bg-surface-container-low p-6 transition-all hover:bg-surface-container">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-primary-fixed text-primary rounded-lg">
+<span class="material-symbols-outlined text-2xl" data-icon="mowing">grass</span>
 </div>
-<span class="text-4xl font-black text-outline-variant/20">01</span>
+<span class="text-3xl font-black text-outline-variant/20">01</span>
 </div>
-<h4 class="text-2xl font-headline font-bold text-primary mb-2">Mowing Service</h4>
-<p class="text-on-surface-variant max-w-md">Precision cutting and edging to maintain the architectural beauty of your lawn throughout the season.</p>
+<h4 class="text-xl font-headline font-bold text-primary mb-1">Mowing Service</h4>
+<p class="text-sm text-on-surface-variant max-w-md">Precision cutting and edging to maintain your lawn's beauty.</p>
 </div>
 <!-- Service 2: Spring Clean Up -->
-<div class="group relative overflow-hidden rounded-xl bg-secondary-container/30 p-8 transition-all hover:bg-secondary-container/50">
-<div class="flex justify-between items-start mb-12">
-<div class="p-3 bg-secondary text-white rounded-lg">
-<span class="material-symbols-outlined text-3xl" data-icon="eco">eco</span>
+<div class="group relative overflow-hidden rounded-xl bg-secondary-container/30 p-6 transition-all hover:bg-secondary-container/50">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-secondary text-white rounded-lg">
+<span class="material-symbols-outlined text-2xl" data-icon="eco">eco</span>
 </div>
-<span class="text-4xl font-black text-outline-variant/20">02</span>
+<span class="text-3xl font-black text-outline-variant/20">02</span>
 </div>
-<h4 class="text-2xl font-headline font-bold text-primary mb-2">Spring Clean Up</h4>
-<p class="text-on-surface-variant">Resetting your landscape after winter to prepare for lush, vibrant growth.</p>
+<h4 class="text-xl font-headline font-bold text-primary mb-1">Spring Clean Up</h4>
+<p class="text-sm text-on-surface-variant">Resetting landscape after winter for vibrant growth.</p>
 </div>
 <!-- Service 3: Mulching -->
-<div class="group relative overflow-hidden rounded-xl bg-surface-container-high p-8 transition-all hover:bg-surface-container-highest">
-<div class="mb-12">
-<span class="material-symbols-outlined text-3xl text-primary" data-icon="layers">layers</span>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-high p-6 transition-all hover:bg-surface-container-highest">
+<div class="mb-4">
+<span class="material-symbols-outlined text-2xl text-primary" data-icon="layers">layers</span>
 </div>
-<h4 class="text-xl font-headline font-bold text-primary mb-2">Mulching</h4>
-<p class="text-sm text-on-surface-variant">Premium organic mulch applications for moisture retention and aesthetic definition.</p>
+<h4 class="text-lg font-headline font-bold text-primary mb-1">Mulching</h4>
+<p class="text-sm text-on-surface-variant">Premium mulch for moisture retention and aesthetics.</p>
 </div>
 <!-- Service 4: Planting -->
-<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all hover:bg-surface-container">
-<div class="mb-12">
-<span class="material-symbols-outlined text-3xl text-primary" data-icon="potted_plant">potted_plant</span>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-6 transition-all hover:bg-surface-container">
+<div class="mb-4">
+<span class="material-symbols-outlined text-2xl text-primary" data-icon="potted_plant">potted_plant</span>
 </div>
-<h4 class="text-xl font-headline font-bold text-primary mb-2">Planting</h4>
-<p class="text-sm text-on-surface-variant">Strategic seasonal planting of perennials, shrubs, and ornamental trees.</p>
+<h4 class="text-lg font-headline font-bold text-primary mb-1">Planting</h4>
+<p class="text-sm text-on-surface-variant">Seasonal planting of perennials, shrubs, and trees.</p>
 </div>
 <!-- Service 5: Pruning -->
-<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-8 transition-all hover:bg-surface-container">
-<div class="mb-12">
-<span class="material-symbols-outlined text-3xl text-primary" data-icon="content_cut">content_cut</span>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low p-6 transition-all hover:bg-surface-container">
+<div class="mb-4">
+<span class="material-symbols-outlined text-2xl text-primary" data-icon="content_cut">content_cut</span>
 </div>
 <h4 class="text-xl font-headline font-bold text-primary mb-2">Pruning</h4>
 <p class="text-sm text-on-surface-variant">Expert structural pruning to ensure the health and form of your specimen plantings.</p>
@@ -845,8 +869,8 @@
 </div>
 </section>
 <!-- Local Pride Asymmetric Section -->
-<section class="py-16 lg:py-20 bg-surface-container-low relative overflow-hidden">
-<div class="max-w-6xl mx-auto px-4 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<section class="bg-surface-container-low relative overflow-hidden" style="padding: clamp(1.375rem, 2.5vw, 2.375rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.625rem); min-height: calc(100dvh - var(--site-header-h)); display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+<div class="max-w-6xl mx-auto px-4 lg:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 <div class="relative flex justify-center">
 <div class="rounded-2xl overflow-hidden shadow-2xl z-10 relative w-full max-w-md aspect-square">
         <img class="w-full h-full object-cover" alt="Planting flowers with a shovel." loading="lazy" src="assets/shoveling.png?v=20260418"/>
@@ -857,63 +881,157 @@
 <span class="text-[10px] sm:text-xs text-white/80 uppercase tracking-[0.15em]">of experience</span>
 </div>
 </div>
-<div class="space-y-6">
-<h2 class="text-sm font-label uppercase tracking-widest text-secondary">Community First</h2>
-<h3 class="text-4xl md:text-5xl font-headline font-extrabold text-primary leading-tight">Rooted in Montgomery Township</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed">
+<div class="space-y-4">
+<h2 class="text-xs font-label uppercase tracking-widest text-secondary">Community First</h2>
+<h3 class="text-3xl font-headline font-extrabold text-primary leading-tight">Rooted in Montgomery Township</h3>
+<p class="text-base text-on-surface-variant leading-relaxed">
                         We don't just work here; we live here. Serving Montgomery Township, PA, with a focus on community and reliable service is our primary mission. Every lawn we maintain is a contribution to the beauty of our shared neighborhood.
                     </p>
-<div class="pt-4 flex items-center gap-4">
-<div class="h-[2px] w-12 bg-primary"></div>
-<span class="font-bold text-primary italic">Trusted Local Professionals</span>
+<div class="pt-2 flex items-center gap-4">
+<div class="h-[2px] w-8 bg-primary"></div>
+<span class="font-bold text-primary italic text-sm">Trusted Local Professionals</span>
 </div>
 </div>
 </div>
 </section>
 <!-- Gallery Section -->
-<section class="py-16 lg:py-20 bg-surface">
+<section class="bg-surface" style="padding: clamp(1.375rem, 2.5vw, 2.375rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.625rem); min-height: calc(100dvh - var(--site-header-h)); display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
 <div class="max-w-6xl mx-auto px-4 lg:px-6">
-<div class="text-center mb-12">
-<h2 class="text-3xl lg:text-4xl font-headline font-bold text-primary mb-4">Our Work</h2>
-<p class="text-on-surface-variant max-w-xl mx-auto">A portfolio of transformations across Montgomery Township.</p>
+<div class="text-center mb-6">
+<h2 class="text-2xl font-headline font-bold text-primary mb-2">Our Work</h2>
+<p class="text-sm text-on-surface-variant max-w-xl mx-auto">Transformations across Montgomery Township.</p>
 </div>
-<div class="gallery-grid">
-<div class="gallery-card gallery-card--sm-span-3 gallery-card--lg-span-3">
-        <img alt="Colorful tulip garden bed along a driveway." loading="lazy" src="assets/tulips.jpg?v=20260418"/>
-</div>
-<div class="gallery-card gallery-card--sm-span-2 gallery-card--lg-span-2">
-        <img alt="Mulched landscape bed with shrubs and fresh edging." loading="lazy" src="assets/mulch-flowers.png?v=20260418"/>
-</div>
-<div class="gallery-card gallery-card--sm-span-1 gallery-card--lg-span-1">
-        <img alt="Flower garden bed with healthy green grass." loading="lazy" src="assets/flowers-garden.png?v=20260418"/>
-</div>
-<div class="gallery-card gallery-card--sm-span-2 gallery-card--lg-span-2">
-        <img alt="Striped lawn with crisp edging along a walkway." loading="lazy" src="assets/lawn-striped-edged.png?v=20260418"/>
-</div>
-<div class="gallery-card gallery-card--sm-span-2 gallery-card--lg-span-1">
-        <img alt="Hedge trimming in progress." loading="lazy" src="assets/cutting-hedges.png?v=20260418"/>
+<div class="brick-masonry-container overflow-x-auto overflow-y-hidden scrollbar-hide" style="height: 320px;">
+<div class="brick-masonry-grid" style="display: grid; grid-template-columns: repeat(12, 180px); grid-auto-rows: 140px; gap: 12px; width: max-content;">
+  <!-- ROW 1: Double, Single, Double, Single, Double, Single -->
+  
+  <!-- Row 1: Double-column 1 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 1 / span 2; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Colorful tulip garden bed along a driveway." loading="lazy" src="assets/tulips.jpg?v=20260418" onerror="this.style.display='none'; var p=document.createElement('div');p.className='absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500 text-xs font-medium rounded-lg';p.textContent='Placeholder';this.parentElement.appendChild(p);"/>
+  </div>
+  
+  <!-- Row 1: Single-column 1 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 3; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Mulched landscape bed with shrubs and fresh edging." loading="lazy" src="assets/mulch-flowers.png?v=20260418" onerror="this.style.display='none'; var p=document.createElement('div');p.className='absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500 text-xs font-medium rounded-lg';p.textContent='Placeholder';this.parentElement.appendChild(p);"/>
+  </div>
+  
+  <!-- Row 1: Double-column 2 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 4 / span 2; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Striped lawn with crisp edging along a walkway." loading="lazy" src="assets/lawn-striped-edged.png?v=20260418" onerror="this.style.display='none'; var p=document.createElement('div');p.className='absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500 text-xs font-medium rounded-lg';p.textContent='Placeholder';this.parentElement.appendChild(p);"/>
+  </div>
+  
+  <!-- Row 1: Single-column 2 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 6; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Hedge trimming in progress." loading="lazy" src="assets/cutting-hedges.png?v=20260418" onerror="this.style.display='none'; var p=document.createElement('div');p.className='absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500 text-xs font-medium rounded-lg';p.textContent='Placeholder';this.parentElement.appendChild(p);"/>
+  </div>
+  
+  <!-- Row 1: Double-column 3 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 7 / span 2; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Freshly cut lawn with morning dew." loading="lazy" src="assets/fresh-lawn.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 1: Single-column 3 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 9; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Professional lawn mowing service." loading="lazy" src="assets/mowing-service.jpg?v=20260418" onerror="this.style.display='none'; var p=document.createElement('div');p.className='absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500 text-xs font-medium rounded-lg';p.textContent='Placeholder';this.parentElement.appendChild(p);"/>
+  </div>
+  
+  <!-- Row 1: Double-column 4 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 10 / span 2; grid-row: 1;">
+    <img class="w-full h-full object-cover" alt="Landscaping design and installation." loading="lazy" src="assets/landscaping-design.jpg?v=20260418"/>
+  </div>
+  
+  <!-- ROW 2: Single, Double, Single, Double, Single, Double -->
+  
+  <!-- Row 2: Single-column 1 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 1; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Spring cleanup service." loading="lazy" src="assets/spring-cleanup.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Double-column 1 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 2 / span 2; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Fall leaf removal service." loading="lazy" src="assets/fall-cleanup.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Single-column 2 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 4; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Garden maintenance and care." loading="lazy" src="assets/garden-care.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Double-column 2 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 5 / span 2; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Tree pruning and trimming." loading="lazy" src="assets/tree-pruning.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Single-column 3 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 7; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Landscape renovation." loading="lazy" src="assets/landscape-renovation.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Double-column 3 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 8 / span 2; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Garden design services." loading="lazy" src="assets/garden-design.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Single-column 4 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 10; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Lawn treatment programs." loading="lazy" src="assets/lawn-treatment.jpg?v=20260418"/>
+  </div>
+  
+  <!-- Row 2: Double-column 4 -->
+  <div class="brick-item rounded-lg overflow-hidden" style="grid-column: 11 / span 2; grid-row: 2;">
+    <img class="w-full h-full object-cover" alt="Irrigation services." loading="lazy" src="assets/irrigation.jpg?v=20260418"/>
+  </div>
 </div>
 </div>
 </div>
 </section>
+
+<!-- Script to handle broken images with placeholders -->
+<script>
+  // Handle broken images and show placeholders
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.brick-item img');
+    
+    images.forEach(function(img) {
+      // Add onerror handler to each image
+      img.onerror = function() {
+        this.style.display = 'none'; // Hide the broken image
+        
+        // Create placeholder element
+        const placeholder = document.createElement('div');
+        placeholder.className = 'absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500 text-xs font-medium rounded-lg';
+        placeholder.textContent = 'Placeholder';
+        
+        // Add placeholder to the parent container
+        this.parentElement.appendChild(placeholder);
+      };
+      
+      // Also check if image is already broken
+      if (img.complete && img.naturalHeight === 0) {
+        img.onerror();
+      }
+    });
+  });
+</script>
+
 <!-- CTA Section -->
-<section id="estimate" class="py-20 lg:py-24 px-4 lg:px-6 bg-[#f4f4ef] dark:bg-[#1a1c19]">
+<section id="estimate" class="bg-[#f4f4ef] dark:bg-[#1a1c19]" style="padding: clamp(1.375rem, 2.5vw, 2.375rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.625rem); min-height: calc(100dvh - var(--site-header-h)); display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
 <div class="max-w-3xl mx-auto">
-<div class="rounded-[28px] overflow-hidden relative text-center px-8 py-12 lg:px-14 lg:py-16 bg-gradient-to-br from-[#0f2a1a] via-[#163421] to-[#2d4b36] ring-1 ring-white/10 shadow-[0_30px_90px_-45px_rgba(0,0,0,0.65)]">
-<div class="absolute -top-40 -right-40 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-<div class="absolute -bottom-48 -left-48 w-[28rem] h-[28rem] bg-[#f7deca]/10 rounded-full blur-3xl"></div>
+<div class="rounded-[20px] overflow-hidden relative text-center px-6 py-8 bg-gradient-to-br from-[#0f2a1a] via-[#163421] to-[#2d4b36] ring-1 ring-white/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.65)]">
+<div class="absolute -top-20 -right-20 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-[20rem] h-[20rem] bg-[#f7deca]/10 rounded-full blur-3xl"></div>
 <div class="relative z-10 max-w-xl mx-auto">
-<h2 class="text-2xl lg:text-3xl font-headline font-extrabold text-white tracking-tight mb-4">Ready for a Better Lawn?</h2>
-<p class="text-sm lg:text-base text-white/75 leading-relaxed mb-8">Get a free estimate for dependable, polished lawn care in Montgomery Township.</p>
+<h2 class="text-xl font-headline font-extrabold text-white tracking-tight mb-3">Ready for a Better Lawn?</h2>
+<p class="text-sm text-white/75 leading-relaxed mb-6">Free estimate for dependable lawn care in Montgomery Township.</p>
 
-<a class="block text-4xl lg:text-6xl font-black text-white tracking-tight hover:text-white/90 transition-colors mb-7" href="tel:484-636-8418">484-636-8418</a>
+<a class="block text-3xl font-black text-white tracking-tight hover:text-white/90 transition-colors mb-6" href="tel:484-636-8418">484-636-8418</a>
 
-<a class="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-[#163421] text-sm font-extrabold rounded-full hover:bg-white/90 transition-colors shadow-sm" href="tel:484-636-8418">
-<span class="material-symbols-outlined text-base" data-icon="call">call</span>
-                            Call for Estimate
+<a class="inline-flex items-center justify-center gap-2 px-5 py-2 bg-white text-[#163421] text-xs font-extrabold rounded-full hover:bg-white/90 transition-colors shadow-sm" href="tel:484-636-8418">
+<span class="material-symbols-outlined text-sm" data-icon="call">call</span>
+                            Call Now
                         </a>
 
-<p class="mt-8 text-[11px] lg:text-xs text-white/65 tracking-wide">Licensed • Reliable • Local</p>
+<p class="mt-4 text-[10px] text-white/65 tracking-wide">Licensed • Reliable • Local</p>
 </div>
 </div>
 </div>
@@ -928,7 +1046,7 @@
 <span class="material-symbols-outlined text-[#163421] dark:text-[#fafaf5]">landscape</span>
 <span class="text-lg font-extrabold text-[#163421] dark:text-[#fafaf5] uppercase tracking-wider font-['Manrope']">SLV Landscaping</span>
 </div>
-<p class="mt-4 text-[#2f312e]/80 dark:text-[#c2c8c0] font-['Manrope'] text-sm leading-relaxed max-w-sm">Professional lawn care and landscaping for Montgomery Township homeowners.</p>
+<p class="mt-4 text-[#2f312e]/80 dark:text-[#c2c8c0] font-['Manrope'] text-sm leading-relaxed max-w-sm">Professional lawn care and landscaping throughout the Montgomery Township area.</p>
 <p class="mt-4 text-[#163421]/80 dark:text-white/70 text-xs tracking-wide">Licensed • Reliable • Local</p>
 </div>
 
